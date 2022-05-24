@@ -9772,3 +9772,45 @@ CONTEXT:  функция PL/pgSQL get_permission(integer,character varying,integ
  ===================== 
 [2022-05-24 18:07:09] Сообщение: Cannot modify header information - headers already sent by (output started at D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php:90); Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
  ===================== 
+[2022-05-24 21:49:39] Сообщение: SQLSTATE[08006] [7] �����:  ���� "postgres" �� ����������; Файл: D:\OpenServer\domains\trans\vendor\core\DB.php; Линия: 15 
+ ===================== 
+[2022-05-24 22:59:23] Сообщение: Call to undefined method models\PermissionModel::updatePeriod(); Файл: D:\OpenServer\domains\trans\app\controllers\PermissionController.php; Линия: 100 
+ ===================== 
+[2022-05-24 23:20:41] Сообщение: Cannot modify header information - headers already sent by (output started at D:\OpenServer\domains\trans\vendor\core\libs\functions.php:5); Файл: D:\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-24 23:23:35] Сообщение: Undefined array key "id"; Файл: D:\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 330 
+ ===================== 
+[2022-05-24 23:23:49] Сообщение: Undefined array key "id"; Файл: D:\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 331 
+ ===================== 
+[2022-05-24 23:23:57] Сообщение: SQLSTATE[22P02]: Invalid text representation: 7 ОШИБКА:  неверный синтаксис для типа boolean: "24.05.2022"; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:26:53] Сообщение: Unexpected token "operator" of value ">".; Файл: D:\OpenServer\domains\trans\app\views\Permission\add.php; Линия: 106 
+ ===================== 
+[2022-05-24 23:27:40] Сообщение: syntax error, unexpected token ";", expecting ")"; Файл: D:\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 736 
+ ===================== 
+[2022-05-24 23:37:26] Сообщение: SQLSTATE[22007]: Invalid datetime format: 7 ОШИБКА:  неверный синтаксис для типа date: ""; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:39:59] Сообщение: SQLSTATE[22007]: Invalid datetime format: 7 ОШИБКА:  неверный синтаксис для типа date: ""; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:40:02] Сообщение: SQLSTATE[22007]: Invalid datetime format: 7 ОШИБКА:  неверный синтаксис для типа date: ""; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:40:10] Сообщение: SQLSTATE[22007]: Invalid datetime format: 7 ОШИБКА:  неверный синтаксис для типа date: ""; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:41:33] Сообщение: SQLSTATE[22008]: Datetime field overflow: 7 ОШИБКА:  значение поля типа date/time вне диапазона: "0"
+HINT:  Возможно, вам нужно изменить настройку "datestyle".; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:42:32] Сообщение: SQLSTATE[22008]: Datetime field overflow: 7 ОШИБКА:  значение поля типа date/time вне диапазона: "10:10:1000"; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:43:13] Сообщение: SQLSTATE[22008]: Datetime field overflow: 7 ОШИБКА:  значение поля типа date/time вне диапазона: "10:10:999"; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:43:25] Сообщение: SQLSTATE[22007]: Invalid datetime format: 7 ОШИБКА:  неверный синтаксис для типа date: ""; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 
+[2022-05-24 23:51:41] Сообщение: SQLSTATE[22008]: Datetime field overflow: 7 ОШИБКА:  значение поля типа date/time вне диапазона: "24.05.2022"
+CONTEXT:  SQL-оператор: "update permission
+set number = var_number, description = var_description, addition = var_addition,
+subdivisionid = var_subdivision_id, untypical_work = var_untypical_work,
+emergency_minute = var_emergency_minute, is_emergency_activation = var_is_emergency_activation,
+period_start = TO_DATE(var_period_start,'YYYY-MM-DD'), period_end = TO_DATE(var_period_end,'YYYY-MM-DD')
+where permission.id = var_id"
+функция PL/pgSQL update_permission(integer,character varying,text,text,integer,text,integer,boolean,text,text), строка 4, оператор SQL-оператор; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
+ ===================== 

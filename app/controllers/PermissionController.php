@@ -96,6 +96,8 @@ class PermissionController extends AppController
             $this->model->delEmployee($_REQUEST["id_responsible_for_preparation"], $_SESSION['idCurrentPermission'], 2);
         } elseif(isset($_POST['pdf'])) {
             $this->model->downloadPDF();
+        } elseif(isset($_POST['add-period'])) {
+            $this->model->updatePeriod($_POST['date-start'], $_POST['date-end']);
         }
 
         $this->setAddVarsToTwig();

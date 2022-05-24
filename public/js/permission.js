@@ -24,7 +24,7 @@ if(document.querySelector('.filter')) {
 
     function setMaskSearch(inputSearch) {
         let dateOptions = {
-            mask: /^[а-яА-Я0-9 ]*$/,
+            mask: /^[а-яА-Я0-9-]*$/,
             lazy: false
         };
 

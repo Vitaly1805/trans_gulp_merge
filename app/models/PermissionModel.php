@@ -219,47 +219,15 @@ class PermissionModel extends AppModel
             $permissions =  $this->permission->getPermission(0, '', 0, '', $_SESSION['date_start'], $_SESSION['date_end']);
         }
 
-        unset($_SESSION['date_start']);
-        unset($_SESSION['date_end']);
-
         return $permissions;
-    }
-
-    protected function sortArrByDate($arr = []):array {
-        usort($arr, function($a, $b){
-            return (strtotime($b['date']) - strtotime($a['date']));
-        });
-
-        return $arr;
-    }
-
-    protected function filterPermissionByStatuses($role = []):array {
-        $result = [];
-        $permissions = [];
-        $statuses = explode(' ', $_SESSION['statuses']);
-
-        foreach ($statuses as $statusId) {
-            if($role['isAuthor']) {
-                $permissions =  $this->permission->getPermission(0, '', $_COOKIE['user'], '', '', '', $statusId);
-            } elseif($role['isDispatcher']) {
-                $date = date('Y.m.d');
-                $permissions =  $this->permission->getPermission(0, '', 0, '', $date, $date, $statusId);
-            }
-
-            foreach ($permissions as $permission) {
-                $result[] = $permission;
-            }
-        }
-
-        $result = array_map( 'unserialize', array_unique(
-            array_map( 'serialize', $result )
-        ));
-
-        return $this->sortArrByDate($result);
     }
 
     protected function filterPermission($roles = [], $permissions = []) {
         $result = [];
+
+        if(isset($_SESSION['date_start'])) {
+            $permissions = $this->filterPermissionByDates($roles);
+        }
 
         if(isset($_SESSION['statuses']) && $_SESSION['statuses'] !== '') {
             $statuses = explode(' ', $_SESSION['statuses']);
@@ -323,6 +291,16 @@ class PermissionModel extends AppModel
     public function setNumPageToSession($numPage = 1) {
         $_SESSION['num_page'] = intval($numPage);
         $this->redirect('permission');
+    }
+
+    public function updatePeriod($dateStart, $dateEnd) {
+        $permission = $this->permission->getPermission($_SESSION['idCurrentPermission'])[0];
+        $this->permission->updatePermission($permission['id'], $permission['description'], $permission['addition'],
+                                            $permission['number'], $permission['subdivision_id'], $permission['untypical_work'],
+                                            $permission['emergency_minute'], $permission['is_emergency_activation'],
+                                            $dateStart, $dateEnd);
+        $this->date->delDates($_SESSION['idCurrentPermission']);
+        $this->redirect('permission', 'add');
     }
 
     protected function getPermissions($roles = []):array {

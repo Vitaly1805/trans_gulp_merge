@@ -56,9 +56,9 @@ class Permission
         $_SESSION['idCurrentPermission'] =  $stmt->fetch()['id'];
     }
 
-    public function updatePermission($permissionId, $description, $addition, $number, $subdivisionId, $untypicalWork, $emergencyMinute = 0, $isEmergencyActivation = false):void {
+    public function updatePermission($permissionId, $description, $addition, $number, $subdivisionId, $untypicalWork, $emergencyMinute = 0, $isEmergencyActivation = false, $periodStart = '', $periodEnd = ''):void {
         $number = strval($number);
-        $query = "SELECT * FROM update_permission(:permission_id, :number, :description, :addition, :subdivision_id, :untypical_work, :emergency_minute, :is_emergency_activation)";
+        $query = "SELECT * FROM update_permission(:permission_id, :number, :description, :addition, :subdivision_id, :untypical_work, :emergency_minute, :is_emergency_activation, :period_start, :period_end)";
         $stmt = $this->pdo->prepare($query);
         $stmt->bindValue(':permission_id', $permissionId, PDO::PARAM_INT);
         $stmt->bindValue(':number', $number, PDO::PARAM_STR);
@@ -68,6 +68,8 @@ class Permission
         $stmt->bindValue(':untypical_work', $untypicalWork, PDO::PARAM_STR);
         $stmt->bindValue(':emergency_minute', $emergencyMinute, PDO::PARAM_INT);
         $stmt->bindValue(':is_emergency_activation', $isEmergencyActivation, PDO::PARAM_BOOL);
+        $stmt->bindValue(':period_start', $periodStart, PDO::PARAM_STR);
+        $stmt->bindValue(':period_end', $periodEnd, PDO::PARAM_STR);
         $stmt->execute();
 //        $stmt->execute(array('permission_id' => $permissionId, 'description' => $description, 'addition' => $addition,
 //            'number' => $number, 'subdivision_id' => $subdivisionId, 'untypical_work' => $untypicalWork));

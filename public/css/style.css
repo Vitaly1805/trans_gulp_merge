@@ -1713,7 +1713,7 @@ h6 {
   min-width: 100px;
 }
 .table-permission__period {
-  min-width: 160px;
+  min-width: 200px;
 }
 .table-permission__text {
   min-width: 500px;
@@ -2047,10 +2047,11 @@ h6 {
 .permission-add__dates {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  /*width: 100%;*/
   margin: 0 50px 0 0;
   font-size: 18px;
   border: 1px solid #00599b;
+  width: 40%;
 }
 .permission-add__date {
   display: flex;
@@ -3062,4 +3063,36 @@ h6 {
 
 .hidden {
   display: none;
+}
+
+.period-permission {
+  margin: 0 0 0 10px;
+  position: relative;
+}
+.period-permission input {
+  width: 200px;
+}
+.period-permission__form {
+  display: none;
+}
+.period-permission__form_active {
+  display: block;
+}
+.period-permission__form-body {
+  position: absolute;
+  top: 0;
+  left: 200px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 0 0 50px;
+  background: #81BEF7;
+  padding: 10px;
+  border-radius: 5px;
+}
+.period-permission__button {
+  width: 200px;
+}
+.period-permission__subtitle {
+  font-size: 18px;
+  margin: 0 0 10px 0;
 }

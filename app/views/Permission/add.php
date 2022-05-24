@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="/public/css/style.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
     <title>{{meta.title}}</title>
 </head>
 <body>
@@ -72,6 +72,7 @@
                             1. Периоды проведения работ:
                         </div>
                         <div class="permission-add__block">
+                            {% if current_dates|length > 0 %}
                             <div class="permission-add__dates">
                                 <div class="permission-add__date">
                                     <div class="permission-add__col">
@@ -101,8 +102,48 @@
                                 </div>
                                 {% endfor %}
                             </div>
+                            {% endif %}
+                            {% if permission.period_start > '' %}
+                            <div class="permission-add__dates">
+                                <div class="permission-add__date">
+                                    <div class="permission-add__col">
+                                        Период начала
+                                    </div>
+                                    <div class="permission-add__col">
+                                        Период окончания
+                                    </div>
+                                </div>
+                                <div class="permission-add__date">
+                                    <div class="permission-add__col">
+                                        {{permission.period_start}}
+                                        <input type="text" hidden value="{{permission.period_start}}">
+                                    </div>
+                                    <div class="permission-add__col">
+                                        {{permission.period_end}}
+                                        <input type="text" hidden value="{{permission.period_end}}">
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
                             {% if roles.isAuthor and permission.status_id < 3 %}
-                            <a href="http://trans/date" class="permission-add__button input button sticky">Изменить</a>
+                            <a href="http://trans/date" class="permission-add__button input button sticky">Добавить даты</a>
+                            <div class="permission__period period-permission">
+                                <span class="period-permission__button input button">Добавить период</span>
+                                <form method="post" class="period-permission__form">
+                                    <div class="period-permission__form-body">
+                                        <div class="period-permission__subtitle">
+                                            Дата начала:
+                                        </div>
+                                        <input type="text" required name="date-start" class="period-permission__input period-permission__date date-mask input" pattern="^(?:(?:31(\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$">
+                                        <div class="period-permission__subtitle">
+                                            Дата окончания:
+                                        </div>
+                                        <input type="text" required name="date-end" class="period-permission__input input date-mask" pattern="^(?:(?:31(\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\.)(?:0?[1,3-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$">
+                                        <input type="submit" name="add-period" value="Ок" class="period-permission__input period-permission__date input button">
+                                        <span class="period-permission__input period-permission__clear period-permission__date input button">Отменить</span>
+                                    </div>
+                                </form>
+                            </div>
                             {% endif %}
                         </div>
                     </div>

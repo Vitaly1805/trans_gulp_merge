@@ -4,15 +4,18 @@ namespace models;
 
 use core\DB;
 use widgets\date\Date;
+use widgets\permission\Permission;
 
 class DateModel extends AppModel
 {
     protected $date;
+    protected $permission;
     protected $db;
 
     public function __construct() {
         $this->db = DB::getMainDB();
         $this->date = new Date($this->db);
+        $this->permission = new Permission($this->db);
     }
 
     public function setDates() {
@@ -23,6 +26,12 @@ class DateModel extends AppModel
             $counter++;
             $this->date->setDate($_POST['date-' . $counter], $_POST['from-time-' . $counter], $_POST['to-time-' . $counter], $_SESSION['idCurrentPermission']);
         }
+
+        $permission = $this->permission->getPermission($_SESSION['idCurrentPermission'])[0];
+        $this->permission->updatePermission($permission['id'], $permission['description'], $permission['addition'],
+            $permission['number'], $permission['subdivision_id'], $permission['untypical_work'],
+            $permission['emergency_minute'], $permission['is_emergency_activation'],
+            '', '');
 
         $this->redirect('permission', 'add');
     }

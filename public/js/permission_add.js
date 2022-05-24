@@ -193,3 +193,18 @@ function delResponsible(id, parentForm){
 }
 //Удаление ответственных END;
 
+//Открытие и скрытие формы добавления периода
+if(document.querySelector('.period-permission__form')) {
+    let buttonAddPeriod = document.querySelector('.period-permission__button');
+    let formPeriod = document.querySelector('.period-permission__form');
+    let buttonClear = document.querySelector('.period-permission__clear');
+
+    buttonAddPeriod.addEventListener('click', () => {
+        formPeriod.classList.toggle('period-permission__form_active');
+    });
+
+    buttonClear.addEventListener('click', () => {
+        formPeriod.classList.remove('period-permission__form_active');
+    });
+}
+

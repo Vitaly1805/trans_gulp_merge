@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<link rel="stylesheet" href="/public/css/style.min.css">
+	<link rel="stylesheet" href="/public/css/style.css">
 	<title>{{meta.title}}</title>
 </head>
 	<body>
@@ -497,7 +497,7 @@
                                 {{permission.number}}
 							</div>
 							<div class="table-content__col table-col table-permission__col table-permission__status">
-                                {{permission.status_permission_name}}<span style="font-size: 11px; margin: 5px 0 0 0;">{{permission.status_mask_date}}</span>
+                                {{permission.status_permission_name}}<span style="font-size: 11px; margin: 5px 0 0 0;">{{permission.status_permission_date}}</span>
 							</div>
                             <div class="table-content__col table-col table-permission__col table-permission__status">
                                 {{permission.status_work_name}}<span style="font-size: 11px; margin: 5px 0 0 0;">{{permission.status_work_date}}</span>
@@ -760,6 +760,11 @@
                                 {% endfor %}
                             </div>
                             <div class="table-content__col table-col table-permission__col table-permission__period">
+                                {% if permission.period_start > '' %}
+                                <div class="table-permission__subname">
+                                    {{permission.period_start}} - {{permission.period_end}}
+                                </div>
+                                {% else %}
                                 {% for date in dates %}
                                 {% if date.permissionid == permission.id %}
                                 <div class="table-permission__subname">
@@ -767,6 +772,7 @@
                                 </div>
                                 {% endif %}
                                 {% endfor %}
+                                {% endif %}
                             </div>
                             <div class="table-content__col table-col table-permission__col table-permission__text">
                                 {% for work in typical_works %}

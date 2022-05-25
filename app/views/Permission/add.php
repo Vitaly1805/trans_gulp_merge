@@ -56,17 +56,39 @@
                     {% endif %}
                 </form>
                 <div class="permission-add__list">
-                    <div class="permission-add__item">
-                        <div class="permission-add__title">
-                            Выдал начальнику {{supervisorOfResponsibleForExecute.lastname}} {{supervisorOfResponsibleForExecute.name}} {{supervisorOfResponsibleForExecute.patronymic}}
+                    <div class="permission-add__item permission-add__item_top">
+                        <div class="permission-add__block permission-add__block_top">
+                            <div class="permission-add__title">
+                                Выдал начальнику {{supervisorOfResponsibleForExecute.lastname}} {{supervisorOfResponsibleForExecute.name}} {{supervisorOfResponsibleForExecute.patronymic}}
+                            </div>
+                            <form method="post" action="http://trans/employee" class="permission-add__supervisor">
+                                <input type="text" readonly name="id_type_person" value="5" hidden>
+                                {% if roles.isAuthor and permission.status_id < 3 %}
+                                <input type="submit" class="permission-add__button input button" value="Изменить руководителя ответственного исполнителя" name="add-responsible"  style="width: 500px">
+                                {% endif %}
+                            </form>
                         </div>
-                        <form method="post" action="http://trans/employee" class="permission-add__supervisor">
-                            <input type="text" readonly name="id_type_person" value="5" hidden>
+                        <div class="permission-add__block permission-add__block_top">
+                            <div class="permission-add__title">
+                                Иное основание для создания разрешения:
+                            </div>
                             {% if roles.isAuthor and permission.status_id < 3 %}
-                            <input type="submit" class="permission-add__button input button" value="Изменить руководителя ответственного исполнителя" name="add-responsible"  style="width: 500px">
+                            <textarea class="permission-add__textarea permission-add__textarea_top textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>
+                            {% else %}
+                            <textarea readonly class="permission-add__textarea permission-add__textarea_top textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>
                             {% endif %}
-                        </form>
+                        </div>
                     </div>
+<!--                    <div class="permission-add__item">-->
+<!--                        <div class="permission-add__title">-->
+<!--                            Иное основание для создания разрешения:-->
+<!--                        </div>-->
+<!--                        {% if roles.isAuthor and permission.status_id < 3 %}-->
+<!--                        <textarea class="permission-add__textarea textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>-->
+<!--                        {% else %}-->
+<!--                        <textarea readonly class="permission-add__textarea textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>-->
+<!--                        {% endif %}-->
+<!--                    </div>-->
                     <div class="permission-add__item">
                         <div class="permission-add__title">
                             1. Периоды проведения работ:
@@ -393,16 +415,6 @@
                         <textarea class="permission-add__textarea textarea" name="addition" id="addition" cols="30" rows="10" placeholder="Введите информацию...">{{permission.addition}}</textarea>
                         {% else %}
                         <textarea readonly class="permission-add__textarea textarea" name="addition" id="addition" cols="30" rows="10" placeholder="Введите информацию...">{{permission.addition}}</textarea>
-                        {% endif %}
-                    </div>
-                    <div class="permission-add__item">
-                        <div class="permission-add__title">
-                            6. Иное основание для создания разрешения:
-                        </div>
-                        {% if roles.isAuthor and permission.status_id < 3 %}
-                        <textarea class="permission-add__textarea textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>
-                        {% else %}
-                        <textarea readonly class="permission-add__textarea textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>
                         {% endif %}
                     </div>
                 </div>

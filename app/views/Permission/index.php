@@ -31,85 +31,183 @@
 </header>
 		<main class="content">
 			<div class="content__body _container-main">
-                <div class="navigation-chain">
-                    <div class="navigation-chain__item navigation-chain__item_active">
-                        {% if is_archive %}
-                        Архив разрешений
-                        {% else %}
-                        Разрешения
-                        {% endif %}
-                    </div>
-                </div>
                 <div class="permission__top">
-                    <div class="content__buttons" style="padding: 0">
-                        {% if is_archive %}
-                        <form action="" method="post" class="content__form">
-                            <input type="submit" class="content__button-checkout" value="Оперативные"  name="operative-permissions">
-                        </form>
-                        <form action="" method="post" class="content__form">
-                            <input type="submit" class="content__button-checkout content__button-checkout_active" value="Архив" name="archive-permissions">
-                        </form>
-                        {% else %}
-                        <form action="" method="post" class="content__form">
-                            <input type="submit" class="content__button-checkout content__button-checkout_active" value="Оперативные"  name="operative-permissions">
-                        </form>
-                        <form action="" method="post" class="content__form">
-                            <input type="submit" class="content__button-checkout" value="Архив" name="archive-permissions">
-                        </form>
-                        {% endif %}
+                    <div class="permission__top-block">
+                        <div class="navigation-chain">
+                            <div class="navigation-chain__item navigation-chain__item_active">
+                                {% if is_archive %}
+                                Архив разрешений
+                                {% else %}
+                                Разрешения
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="content__buttons" style="padding: 0">
+                            {% if is_archive %}
+                            <form action="" method="post" class="content__form">
+                                <input type="submit" class="content__button-checkout" value="Оперативные"  name="operative-permissions">
+                            </form>
+                            <form action="" method="post" class="content__form">
+                                <input type="submit" class="content__button-checkout content__button-checkout_active" value="Архив" name="archive-permissions">
+                            </form>
+                            {% else %}
+                            <form action="" method="post" class="content__form">
+                                <input type="submit" class="content__button-checkout content__button-checkout_active" value="Оперативные"  name="operative-permissions">
+                            </form>
+                            <form action="" method="post" class="content__form">
+                                <input type="submit" class="content__button-checkout" value="Архив" name="archive-permissions">
+                            </form>
+                            {% endif %}
+                        </div>
                     </div>
                     <div class="permission__pallete pallete">
                         <div class="pallete__body">
-                            <div class="pallete__title">
-                                Статусы разрешений
+                            <div class="pellete__block">
+                                <div class="pallete__title">
+                                    Статусы разрешений
+                                </div>
+                                <div class="pallete__list">
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_violet">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Создание
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_beige">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Согласование
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_blue">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Утверждено
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_green">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Открыто
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_yellow">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Приостановлено
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_gray">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Закрыто
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_pastel">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Завершено
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="pallete__list">
-                                <div class="pallete__item">
-                                    <div class="pallete__color pallete__color_violet">
+                            <div class="pellete__block">
+                                <div class="pallete__title">
+                                    Статусы масок
+                                </div>
+                                <div class="pallete__list">
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_darkviolet">
 
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            <span>- Требуется</span><span class="pallete__subtitle_pad">маскирование</span>
+                                        </div>
                                     </div>
-                                    <div class="pallete__subtitle">
-                                        - Создание
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_orange">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Замаскировано
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_darkgreen">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            <span>- Маскирование</span><span class="pallete__subtitle_pad">проверено</span>
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_darkyellow">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            <span>- Требуется</span><span class="pallete__subtitle_pad">демаскирование</span>
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_brown">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Задемаскировано
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_darkblue">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            <span>- Демаскирование</span><span class="pallete__subtitle_pad">проверено</span>
+                                        </div>
+                                    </div>
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_red">
+
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            <span>- Маскирование</span><span class="pallete__subtitle_pad">не требуется</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="pallete__item">
-                                    <div class="pallete__color pallete__color_beige">
-
-                                    </div>
-                                    <div class="pallete__subtitle">
-                                        - Согласование
-                                    </div>
+                            </div>
+                            <div class="pellete__block">
+                                <div class="pallete__title">
+                                    Статусы работ
                                 </div>
-                                <div class="pallete__item">
-                                    <div class="pallete__color pallete__color_blue">
+                                <div class="pallete__list pallete__list_work">
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_violet">
 
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Работы начаты
+                                        </div>
                                     </div>
-                                    <div class="pallete__subtitle">
-                                        - Утверждено
-                                    </div>
-                                </div>
-                                <div class="pallete__item">
-                                    <div class="pallete__color pallete__color_green">
+                                    <div class="pallete__item">
+                                        <div class="pallete__color pallete__color_beige">
 
-                                    </div>
-                                    <div class="pallete__subtitle">
-                                        - Открыто
-                                    </div>
-                                </div>
-                                <div class="pallete__item">
-                                    <div class="pallete__color pallete__color_yellow">
-
-                                    </div>
-                                    <div class="pallete__subtitle">
-                                        - Приостановлено
-                                    </div>
-                                </div>
-                                <div class="pallete__item">
-                                    <div class="pallete__color pallete__color_gray">
-
-                                    </div>
-                                    <div class="pallete__subtitle">
-                                        - Закрыто
+                                        </div>
+                                        <div class="pallete__subtitle">
+                                            - Работы закончены
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -182,8 +280,8 @@
                     <!-- Маскирование -->
                     {% if roles.isReplacementEngineer %}
                     <div class="hidden" id="masking-permission">
-                        <span class="input button button-content permission-event button-permission masking-permission">Замаскировано</span>
-                        <input type="text" class="row-id-process" name="id" required id="">
+                        <span class="input button button-content permission-event button-permission masking-permission">Замаскировать</span>
+                        <input type="text" class="row-id-process" hidden name="id" required id="">
                     </div>
                     {% endif %}
                     <!-- Проверка маскирования -->
@@ -376,7 +474,7 @@
                     {% endif %}
                     {% if roles.isDispatcher %}
                     <form action="" method="post" class="permission__block-button hidden" id="finish-work">
-                        <a class="input button button-content permission-event button-permission">Работы окончены</a>
+                        <a class="input button button-content permission-event button-permission">Работы закончены</a>
                         <input type="text" class="row-id-process" hidden name="id" required id="">
                         <div class="permission__status permission-status">
                             <div class="permission-status__body">
@@ -451,7 +549,40 @@
                                         <label for="{{status.id}}">{{status.name}}</label>
                                     </div>
                                     {% endfor %}
-                                    <input type="text" readonly name="statuses" hidden class="filter-content__statuses">
+                                </div>
+                            </div>
+                            <div class="filter-content__item">
+                                <div class="filter-content__subtitle">
+                                    Статусы масок
+                                </div>
+                                <div class="filter-content__status-list">
+                                    {% for status in statuses_mask %}
+                                    <div class="filter-content__status-item">
+                                        {% if status.active == true %}
+                                        <input id="{{status.id}}" class="filter-content__status-id" type="checkbox" checked="checked">
+                                        {% else %}
+                                        <input id="{{status.id}}" class="filter-content__status-id" type="checkbox">
+                                        {% endif %}
+                                        <label for="{{status.id}}">{{status.name}}</label>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="filter-content__item">
+                                <div class="filter-content__subtitle">
+                                    Статусы работ
+                                </div>
+                                <div class="filter-content__status-list">
+                                    {% for status in statuses_work %}
+                                    <div class="filter-content__status-item">
+                                        {% if status.active == true %}
+                                        <input id="{{status.id}}" class="filter-content__status-id" type="checkbox" checked="checked">
+                                        {% else %}
+                                        <input id="{{status.id}}" class="filter-content__status-id" type="checkbox">
+                                        {% endif %}
+                                        <label for="{{status.id}}">{{status.name}}</label>
+                                    </div>
+                                    {% endfor %}
                                 </div>
                             </div>
                             {% endif %}
@@ -462,6 +593,7 @@
 								</div>
 							</div>
 						</div>
+                        <input type="text" readonly name="statuses" hidden class="filter-content__statuses">
 					</form>
 				</div>
                 {% if permissions|length == 0 %}
@@ -490,6 +622,8 @@
                             <div class="table-content__col table-content__head table-permission__head table-permission__text">Дополнительно</div>
 						</div>
                         {% for permission in permissions %}
+                        <input type="text" readonly value="{{permission.mask_color}}" hidden class="table-mask__background">
+                        <input type="text" readonly value="{{permission.work_color}}" hidden class="table-work__background">
                         <input type="text" readonly value="{{permission.color}}" hidden class="table-permission__background">
 						<div class="table-content__row table-row table-permission__row">
                             <div class="table-content__col table-col table-permission__col col-check">
@@ -504,10 +638,10 @@
 							<div class="table-content__col table-col table-permission__col table-permission__status">
                                 {{permission.status_permission_name}}<span style="font-size: 11px; margin: 5px 0 0 0;">{{permission.status_permission_date}}</span>
 							</div>
-                            <div class="table-content__col table-col table-permission__col table-permission__status">
+                            <div class="table-content__col table-col table-permission__col table-permission__status table-permission__cell-work">
                                 {{permission.status_work_name}}<span style="font-size: 11px; margin: 5px 0 0 0;">{{permission.status_work_date}}</span>
                             </div>
-                            <div class="table-content__col table-col table-permission__col table-permission__status">
+                            <div class="table-content__col table-col table-permission__col table-permission__status table-permission__cell-mask">
                                 {{permission.status_mask_name}}<span style="font-size: 11px; margin: 5px 0 0 0;">{{permission.status_mask_date}}</span>
                             </div>
                              <!-- Максирование -->
@@ -517,8 +651,8 @@
 								<div class="table-content__row table-content__row_head table-permission__row_head">
 									<div class="table-content__head table-permission__protection">Защиты</div>
 									<div class="table-content__head table-permission__mask-status">М</div>
+                                    <div class="table-content__head table-permission__mask-status">ПМ</div>
 									<div class="table-content__head table-permission__mask-status">Д</div>
-									<div class="table-content__head table-permission__mask-status">ПМ</div>
 									<div class="table-content__head table-permission__mask-status">ПД</div>
 								</div>
                                 <form action="" method="post" class="masking-form" id="masking-submit">
@@ -549,21 +683,6 @@
                                             </label>
                                         </div>
                                         {% endif %}
-                                        {% if protection.unmasking == true %}
-                                        <div class="table-col table-permission__mask-status table-permission__item-mask">
-                                            <label class="check-mask">
-                                                <input type="checkbox" class="check-mask__input unmasking-{{i}}" name="unmasking-{{i}}" hidden checked disabled>
-                                                <span class="check-mask__span"></span>
-                                            </label>
-                                        </div>
-                                        {% else %}
-                                        <div class="table-col table-permission__mask-status table-permission__item-mask">
-                                            <label class="check-mask">
-                                                <input type="checkbox" class="check-mask__input unmasking-{{i}}" name="unmasking-{{i}}" hidden disabled>
-                                                <span class="check-mask__span"></span>
-                                            </label>
-                                        </div>
-                                        {% endif %}
                                         {% if protection.check_masking == true %}
                                         <div class="table-col table-permission__mask-status table-permission__item-mask">
                                             <label class="check-mask" >
@@ -575,6 +694,21 @@
                                         <div class="table-col table-permission__mask-status table-permission__item-mask">
                                             <label class="check-mask" >
                                                 <input type="checkbox" class="check-mask__input check_masking-{{i}}" name="check_masking-{{i}}" hidden disabled>
+                                                <span class="check-mask__span"></span>
+                                            </label>
+                                        </div>
+                                        {% endif %}
+                                        {% if protection.unmasking == true %}
+                                        <div class="table-col table-permission__mask-status table-permission__item-mask">
+                                            <label class="check-mask">
+                                                <input type="checkbox" class="check-mask__input unmasking-{{i}}" name="unmasking-{{i}}" hidden checked disabled>
+                                                <span class="check-mask__span"></span>
+                                            </label>
+                                        </div>
+                                        {% else %}
+                                        <div class="table-col table-permission__mask-status table-permission__item-mask">
+                                            <label class="check-mask">
+                                                <input type="checkbox" class="check-mask__input unmasking-{{i}}" name="unmasking-{{i}}" hidden disabled>
                                                 <span class="check-mask__span"></span>
                                             </label>
                                         </div>

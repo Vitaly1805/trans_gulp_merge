@@ -183,8 +183,9 @@ if(document.querySelector('.table-permission__row')) {
                 let formOpenPermission = document.getElementById('open-permission');
                 let formClosePermission = document.getElementById('close-permission');
                 let formStartWork = document.getElementById('start-work');
+                let formFinishWork = document.getElementById('finish-work');
                 let formActiveMaskingPermission = document.getElementById('activemasking-permission'); 
-                activeForms = [formStoryPermission, formOpenPermission, formClosePermission, formStartWork, formActiveMaskingPermission];
+                activeForms = [formStoryPermission, formFinishWork, formOpenPermission, formClosePermission, formStartWork, formActiveMaskingPermission];
             } else if(userRole === 'Автор') {
                 let formEditPermission = document.getElementById('edit-permission');
                 let formCancelApplyPermission = document.getElementById('cancel-apply-permission');
@@ -192,9 +193,13 @@ if(document.querySelector('.table-permission__row')) {
                 let formPDFPermission = document.getElementById('pdf-permission');
                 activeForms = [formStoryPermission, formPDFPermission, formEditPermission, formCancelApplyPermission, formCreateByPermission];
             }else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
+                let formMaskingPermission = document.getElementById('check_masking-permission');
+                let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formCheckUnmaskingPermission];
             }else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
+                let formMaskingPermission = document.getElementById('masking-permission');
+                let formUnmaskingPermission = document.getElementById('unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formUnmaskingPermission];
             }
         } else if(color == 'green') {
             if(userRole === 'Диспетчер') {
@@ -203,147 +208,163 @@ if(document.querySelector('.table-permission__row')) {
                 let formPausePermission = document.getElementById('pause-permission');
                 let formActiveUnaskingPermission = document.getElementById('activeunmasking-permission'); 
                 let formActiveMaskingPermission = document.getElementById('activemasking-permission');
-                activeForms = [formStartWork, formStoryPermission, formClosePermission, formPausePermission, formActiveUnaskingPermission, formActiveMaskingPermission];
+                let formFinishWork = document.getElementById('finish-work');
+                activeForms = [formStartWork, formFinishWork, formStoryPermission, formClosePermission, formPausePermission, formActiveUnaskingPermission, formActiveMaskingPermission];
             } else if(userRole === 'Автор') {
                 let formCreateByPermission = document.getElementById('create-by-permission');
                 let formPDFPermission = document.getElementById('pdf-permission');
                 activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             }else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
+                let formMaskingPermission = document.getElementById('check_masking-permission');
+                let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formCheckUnmaskingPermission];
             }else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
+                let formMaskingPermission = document.getElementById('masking-permission');
+                let formUnmaskingPermission = document.getElementById('unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formUnmaskingPermission];
             }
         } else if(color == 'yellow') {
             if(userRole === 'Диспетчер') {
+                let formStartWork = document.getElementById('start-work');
                 let formFinishWork = document.getElementById('finish-work');
                 let formClosePermission = document.getElementById('close-permission');
                 let formOpenPermission = document.getElementById('open-permission');
                 let formActiveUnaskingPermission = document.getElementById('activeunmasking-permission');
                 let formActiveMaskingPermission = document.getElementById('activemasking-permission');
-                activeForms = [formStoryPermission, formFinishWork, formClosePermission, formOpenPermission, formActiveUnaskingPermission, formActiveMaskingPermission];
+                activeForms = [formStoryPermission, formStartWork, formFinishWork, formClosePermission, formOpenPermission, formActiveUnaskingPermission, formActiveMaskingPermission];
             } else if(userRole === 'Автор') {
                 let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
                 activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
             }else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
+                let formMaskingPermission = document.getElementById('check_masking-permission');
+                let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formCheckUnmaskingPermission];
             }else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
+                let formMaskingPermission = document.getElementById('masking-permission');
+                let formUnmaskingPermission = document.getElementById('unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formUnmaskingPermission];
             }
         }   else if(color == 'gray') {
-            if(userRole === 'Диспетчер') {
+            if (userRole === 'Диспетчер') {
+                let formStartWork = document.getElementById('start-work');
                 let formFinishWork = document.getElementById('finish-work');
                 let formActiveUnaskingPermission = document.getElementById('activeunmasking-permission');
-                let completePermission =  document.getElementById('completed-permission');
-                activeForms = [formStoryPermission, formActiveUnaskingPermission, completePermission, formFinishWork];
-            } else if(userRole === 'Автор') {
+                let completePermission = document.getElementById('completed-permission');
+                activeForms = [formStoryPermission, formStartWork, formActiveUnaskingPermission, completePermission, formFinishWork];
+            } else if (userRole === 'Автор') {
                 let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
                 activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-            }else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
-            }else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
-            }
-        } else if(color == 'red') {
-            /* Требуется маскирование */
-            if(userRole === 'Сменный инженер') {
-                let formMaskingPermission = document.getElementById('masking-permission');
-                activeForms = [formMaskingPermission, formStoryPermission];
-            }  else if(userRole === 'Диспетчер') {
-                let formStartWork = document.getElementById('start-work');
-                let formOpenPermission = document.getElementById('open-permission');
-                activeForms = [formStoryPermission, formOpenPermission, formStartWork];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
-            } else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
-            }
-        } else if(color == 'brown') {
-            /* Маскирование проведено */
-            if(userRole === 'Проверяющий инженер') {
+            } else if (userRole === 'Проверяющий инженер') {
                 let formMaskingPermission = document.getElementById('check_masking-permission');
-                activeForms = [formMaskingPermission, formStoryPermission];
-            } else if(userRole === 'Диспетчер') {
-                let formStartWork = document.getElementById('start-work');
-                let formOpenPermission = document.getElementById('open-permission');
-                activeForms = [formStoryPermission, formOpenPermission, formStartWork];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
-            } else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
-            }
-        } else if(color == 'purple') {
-            if(userRole === 'Диспетчер') {
-                let formStartWork = document.getElementById('start-work');
-                let formOpenPermission = document.getElementById('open-permission');
-                activeForms = [formStoryPermission, formOpenPermission, formStartWork];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-            } else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
-            } else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
-            }
-        } else if(color == 'orange') {
-            if(userRole === 'Сменный инженер') {
-                let formUnmaskingPermission = document.getElementById('unmasking-permission'); 
-                activeForms = [formStoryPermission, formUnmaskingPermission];
-            } else if(userRole === 'Диспетчер') {
-                let formClosePermission = document.getElementById('close-permission');
-                let formRecoveryPermission = document.getElementById('recovery-permission');
-                let formFinishWork = document.getElementById('finish-work');
-                activeForms = [formStoryPermission, formRecoveryPermission, formClosePermission, formFinishWork];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-            }
-        } else if(color == 'lime') {
-            if(userRole === 'Проверяющий инженер') {
-                let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission'); 
-                activeForms = [formCheckUnmaskingPermission];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-            } else if(userRole === 'Диспетчер') {
-                let formFinishWork = document.getElementById('finish-work');
-                activeForms = [formStoryPermission, formFinishWork];
-            } else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
-            }
-        } else if(color == 'darkgreen') {
-            if(userRole === 'Диспетчер') {
-                let formOpenPermission = document.getElementById('open-permission');
-                let formСompletePermission = document.getElementById('completed-permission');
-                let formFinishWork = document.getElementById('finish-work');
-                activeForms = [formStoryPermission, formСompletePermission, formOpenPermission, formFinishWork];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-            }
-        } else if(color == 'white') {
-            if(userRole === 'Диспетчер') {
-                let formRecoveryPermission = document.getElementById('recovery-permission');
-                activeForms = [formStoryPermission, formRecoveryPermission];
-            } else if(userRole === 'Автор') {
-                let formPDFPermission = document.getElementById('pdf-permission');
-                let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-            } else if(userRole === 'Сменный инженер') {
-                activeForms = [formStoryPermission];
-            } else if(userRole === 'Проверяющий инженер') {
-                activeForms = [formStoryPermission];
+                let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formCheckUnmaskingPermission];
+            } else if (userRole === 'Сменный инженер') {
+                let formMaskingPermission = document.getElementById('masking-permission');
+                let formUnmaskingPermission = document.getElementById('unmasking-permission');
+                activeForms = [formStoryPermission, formMaskingPermission, formUnmaskingPermission];
             }
         }
+        //  else if(color == 'red') {
+        //     /* Требуется маскирование */
+        //     if(userRole === 'Сменный инженер') {
+        //         let formMaskingPermission = document.getElementById('masking-permission');
+        //         activeForms = [formMaskingPermission, formStoryPermission];
+        //     }  else if(userRole === 'Диспетчер') {
+        //         let formStartWork = document.getElementById('start-work');
+        //         let formOpenPermission = document.getElementById('open-permission');
+        //         activeForms = [formStoryPermission, formOpenPermission, formStartWork];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
+        //     } else if(userRole === 'Проверяющий инженер') {
+        //         activeForms = [formStoryPermission];
+        //     }
+        // } else if(color == 'brown') {
+        //     /* Маскирование проведено */
+        //     if(userRole === 'Проверяющий инженер') {
+        //         let formMaskingPermission = document.getElementById('check_masking-permission');
+        //         activeForms = [formMaskingPermission, formStoryPermission];
+        //     } else if(userRole === 'Диспетчер') {
+        //         let formStartWork = document.getElementById('start-work');
+        //         let formOpenPermission = document.getElementById('open-permission');
+        //         activeForms = [formStoryPermission, formOpenPermission, formStartWork];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
+        //     } else if(userRole === 'Сменный инженер') {
+        //         activeForms = [formStoryPermission];
+        //     }
+        // } else if(color == 'purple') {
+        //     if(userRole === 'Диспетчер') {
+        //         let formStartWork = document.getElementById('start-work');
+        //         let formOpenPermission = document.getElementById('open-permission');
+        //         activeForms = [formStoryPermission, formOpenPermission, formStartWork];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
+        //     } else if(userRole === 'Проверяющий инженер') {
+        //         activeForms = [formStoryPermission];
+        //     } else if(userRole === 'Сменный инженер') {
+        //         activeForms = [formStoryPermission];
+        //     }
+        // } else if(color == 'orange') {
+        //     if(userRole === 'Сменный инженер') {
+        //         let formUnmaskingPermission = document.getElementById('unmasking-permission');
+        //         activeForms = [formStoryPermission, formUnmaskingPermission];
+        //     } else if(userRole === 'Диспетчер') {
+        //         let formClosePermission = document.getElementById('close-permission');
+        //         let formRecoveryPermission = document.getElementById('recovery-permission');
+        //         let formFinishWork = document.getElementById('finish-work');
+        //         activeForms = [formStoryPermission, formRecoveryPermission, formClosePermission, formFinishWork];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
+        //     }
+        // } else if(color == 'lime') {
+        //     if(userRole === 'Проверяющий инженер') {
+        //         let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission');
+        //         activeForms = [formCheckUnmaskingPermission];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
+        //     } else if(userRole === 'Диспетчер') {
+        //         let formFinishWork = document.getElementById('finish-work');
+        //         activeForms = [formStoryPermission, formFinishWork];
+        //     } else if(userRole === 'Сменный инженер') {
+        //         activeForms = [formStoryPermission];
+        //     }
+        // } else if(color == 'darkgreen') {
+        //     if(userRole === 'Диспетчер') {
+        //         let formOpenPermission = document.getElementById('open-permission');
+        //         let formСompletePermission = document.getElementById('completed-permission');
+        //         let formFinishWork = document.getElementById('finish-work');
+        //         activeForms = [formStoryPermission, formСompletePermission, formOpenPermission, formFinishWork];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
+        //     }
+        // } else if(color == 'white') {
+        //     if(userRole === 'Диспетчер') {
+        //         let formRecoveryPermission = document.getElementById('recovery-permission');
+        //         activeForms = [formStoryPermission, formRecoveryPermission];
+        //     } else if(userRole === 'Автор') {
+        //         let formPDFPermission = document.getElementById('pdf-permission');
+        //         let formCreateByPermission = document.getElementById('create-by-permission');
+        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
+        //     } else if(userRole === 'Сменный инженер') {
+        //         activeForms = [formStoryPermission];
+        //     } else if(userRole === 'Проверяющий инженер') {
+        //         activeForms = [formStoryPermission];
+        //     }
+        // }
     }
 
     function showFormsFuncs() {
@@ -435,8 +456,70 @@ if(document.querySelector('.table-permission__background')) {
             cols.forEach(e => {
                 e.classList.add('table-permission__col_gray');
             })
+        } else if(e.value === 'pastel') {
+            cols.forEach(e => {
+                e.classList.add('table-permission__col_pastel');
+            })
         }
     });
+
+    let tableWorkColors = document.querySelectorAll('.table-work__background');
+
+    tableWorkColors.forEach(e => {
+        let cell = e.nextElementSibling.nextElementSibling.querySelector('.table-permission__cell-work');
+
+        if(e.value === 'violet') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_violet');
+        } else if(e.value === 'beige') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_beige');
+        }
+    });
+
+    let tableMaskColors = document.querySelectorAll('.table-mask__background');
+
+    tableMaskColors.forEach(e => {
+        let cell = e.nextElementSibling.nextElementSibling.nextElementSibling.querySelector('.table-permission__cell-mask');
+
+        if(e.value === 'darkviolet') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_darkviolet');
+        } else if(e.value === 'orange') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_orange');
+        } else if(e.value === 'brown') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_brown');
+        } else if(e.value === 'darkgreen') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_darkgreen');
+        } else if(e.value === 'darkyellow') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_darkyellow');
+        } else if(e.value === 'darkblue') {
+            delColor(cell);
+            cell.classList.add('table-permission__col_darkblue');
+        }
+    });
+}
+
+function delColor(cell) {
+    if(cell.classList.contains('table-permission__col_violet')) {
+        cell.classList.remove('table-permission__col_violet');
+    }else if(cell.classList.contains('table-permission__col_beige')) {
+        cell.classList.remove('table-permission__col_beige');
+    }else if(cell.classList.contains('table-permission__col_blue')) {
+        cell.classList.remove('table-permission__col_blue');
+    }else if(cell.classList.contains('table-permission__col_yellow')) {
+        cell.classList.remove('table-permission__col_yellow');
+    }else if(cell.classList.contains('table-permission__col_green')) {
+        cell.classList.remove('table-permission__col_green');
+    }else if(cell.classList.contains('table-permission__col_gray')) {
+        cell.classList.remove('table-permission__col_gray');
+    }else if(cell.classList.contains('table-permission__col_pastel')) {
+        cell.classList.remove('table-permission__col_pastel');
+    }
 }
 
 //Всплытие окна фактического времени изменения статуса разрешения и комментарий для диспетчера

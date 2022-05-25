@@ -9909,3 +9909,37 @@ HINT:  Функция с данными именем и типами аргум�
  ===================== 
 [2022-05-25 17:26:12] Сообщение: Undefined array key "date_start"; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 105 
  ===================== 
+[2022-05-25 20:51:49] Сообщение: SQLSTATE[08006] [7] �����:  ���� "postgres" �� ����������; Файл: D:\OpenServer\domains\trans\vendor\core\DB.php; Линия: 15 
+ ===================== 
+[2022-05-25 23:29:42] Сообщение: SQLSTATE[42703]: Undefined column: 7 ОШИБКА:  столбец status.type_objectid не существует
+LINE 1: ...atus.name, status.type_statusid as type_statusid, status.typ...
+                                                             ^
+QUERY:  select status.id, status.name, status.type_statusid as type_statusid, status.type_objectid from status
+CONTEXT:  функция PL/pgSQL get_status(integer), строка 7, оператор RETURN QUERY; Файл: D:\OpenServer\domains\trans\app\widgets\status\Status.php; Линия: 16 
+ ===================== 
+[2022-05-25 23:30:10] Сообщение: SQLSTATE[42703]: Undefined column: 7 ОШИБКА:  столбец status.type_objectid не существует
+LINE 1: ...atus.name, status.type_statusid as type_statusid, status.typ...
+                                                             ^
+QUERY:  select status.id, status.name, status.type_statusid as type_statusid, status.type_objectid from status
+CONTEXT:  функция PL/pgSQL get_status(integer), строка 7, оператор RETURN QUERY; Файл: D:\OpenServer\domains\trans\app\widgets\status\Status.php; Линия: 16 
+ ===================== 
+[2022-05-25 23:30:13] Сообщение: SQLSTATE[42703]: Undefined column: 7 ОШИБКА:  столбец status.type_objectid не существует
+LINE 1: ...atus.name, status.type_statusid as type_statusid, status.typ...
+                                                             ^
+QUERY:  select status.id, status.name, status.type_statusid as type_statusid, status.type_objectid from status
+CONTEXT:  функция PL/pgSQL get_status(integer), строка 7, оператор RETURN QUERY; Файл: D:\OpenServer\domains\trans\app\widgets\status\Status.php; Линия: 16 
+ ===================== 
+[2022-05-26 00:00:48] Сообщение: Cannot modify header information - headers already sent by (output started at D:\OpenServer\domains\trans\app\models\PermissionModel.php:212); Файл: D:\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-26 00:04:28] Сообщение: Cannot modify header information - headers already sent by (output started at D:\OpenServer\domains\trans\app\models\PermissionModel.php:212); Файл: D:\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-26 00:04:45] Сообщение: Cannot modify header information - headers already sent by (output started at D:\OpenServer\domains\trans\app\models\PermissionModel.php:212); Файл: D:\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-26 00:04:52] Сообщение: Cannot modify header information - headers already sent by (output started at D:\OpenServer\domains\trans\app\models\PermissionModel.php:212); Файл: D:\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-26 00:06:12] Сообщение: Cannot modify header information - headers already sent by (output started at D:\OpenServer\domains\trans\app\models\PermissionModel.php:212); Файл: D:\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-26 00:07:05] Сообщение: Undefined array key "status_work_id"; Файл: D:\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 678 
+ ===================== 
+[2022-05-26 00:42:54] Сообщение: Undefined variable $result; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 21 
+ ===================== 

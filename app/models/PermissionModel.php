@@ -241,7 +241,6 @@ class PermissionModel extends AppModel
 
         if(isset($_SESSION['statuses']) && $_SESSION['statuses'] !== '') {
             $statuses = explode(' ', $_SESSION['statuses']);
-
             foreach ($permissions as $permission) {
                 $fl = true;
 
@@ -267,6 +266,8 @@ class PermissionModel extends AppModel
                     $result[] = $permission;
                 }
             }
+        } else {
+            $result = $permissions;
         }
 
         unset($_SESSION['filter']);
@@ -292,7 +293,7 @@ class PermissionModel extends AppModel
         $result = [];
 
         foreach ($permissions as $permission) {
-            if(!(in_array($permission['status_id'], array(1,2,3)) )) {
+            if(!(in_array($permission['status_id'], array(1,2)) )) {
                 $result[] = $permission;
             }
         }
@@ -528,17 +529,24 @@ class PermissionModel extends AppModel
         return $result;
     }
 
-    protected function getStatuses($roles = []):array {
+    protected function getStatuses($roles = [], $typeStatusId = 0):array {
         $result = [];
+        $arr = [];
 
         if($roles['isDispatcher']) {
-            $result = $this->getDispatcherStatuses();
+            $arr = $this->getDispatcherStatuses();
         } elseif($roles['isAuthor']) {
-            $result = $this->getAuthorStatuses();
+            $arr = $this->getAuthorStatuses();
         } elseif($roles['isReplacementEngineer']) {
-            $result = $this->getEngineerStatuses();
+            $arr = $this->getEngineerStatuses();
         } elseif($roles['isInspectingEngineer']) {
-            $result = $this->getEngineerStatuses();
+            $arr = $this->getEngineerStatuses();
+        }
+
+        foreach ($arr as $item) {
+            if($item['type_statusid'] == $typeStatusId) {
+                $result[] = $item;
+            }
         }
 
         if(isset($_SESSION['statuses'])) {
@@ -550,7 +558,9 @@ class PermissionModel extends AppModel
                 }
             }
 
-            unset($_SESSION['statuses']);
+            if($typeStatusId == 3) {
+                unset($_SESSION['statuses']);
+            }
         } else {
             foreach ($result as &$item) {
                 $item['active'] = true;
@@ -623,7 +633,9 @@ class PermissionModel extends AppModel
             'message' => 'Совпадений не найдено',
             'search_info' => $this->getSearch(),
             'roles' => $roles,
-            'statuses' => $this->getStatuses($roles),
+            'statuses' => $this->getStatuses($roles, 1),
+            'statuses_mask' => $this->getStatuses($roles, 2),
+            'statuses_work' => $this->getStatuses($roles, 3),
             'user_fio' => $this->getUserFio($this->db),
             'is_archive' => $this->isArchive(),
             'nums_pages' => $this->pagination->getArrNumPages()];
@@ -662,27 +674,34 @@ class PermissionModel extends AppModel
                 $permission['color'] = 'yellow';
             } elseif($permission['status_id'] === 6) {
                 $permission['color'] = 'gray';
-            } elseif($permission['status_id'] === 7) {  /* Требуется маскирование */
-                $permission['color'] = 'red';
-            } elseif($permission['status_id'] === 8) {  /* Маскирование проведено */
-                $permission['color'] = 'brown';
-            } elseif($permission['status_id'] === 9) {  /* Проверка маскирования проведена */
-                $permission['color'] = 'purple';
-            } elseif($permission['status_id'] === 10) {  /* Требуется демаскирование */
-                $permission['color'] = 'orange';
-                $permission['color'] = 'orange';
-            } elseif($permission['status_id'] === 11) {  /* Демаскирование проведено */
-                $permission['color'] = 'lime';
-            } elseif($permission['status_id'] === 12) {  /* Проверка демаскирования проведена */
-                $permission['color'] = 'darkgreen';
-            } elseif($permission['status_id'] === 13) {  /* Не требуется маскирование */
-                $permission['color'] = 'lightgreen';
-            } elseif($permission['status_id'] === 14) {  /* Работа начата */
-                $permission['color'] = 'lightblue';
-            } elseif($permission['status_id'] === 15) {  /* Работа окончена */
-                $permission['color'] = 'lightyellow';
-            } elseif($permission['status_id'] === 16) {  /* Завершить */
-                $permission['color'] = 'white';
+            } elseif($permission['status_id'] === 16) {
+                $permission['color'] = 'pastel';
+            }
+
+            if(isset($permission['status_work_id'])) {
+                if($permission['status_work_id'] === 14) {
+                    $permission['work_color'] = 'violet';
+                } elseif($permission['status_work_id'] === 15) {
+                    $permission['work_color'] = 'beige';
+                }
+            }
+
+            if(isset($permission['status_mask_id'])) {
+                if($permission['status_mask_id'] === 7) {
+                    $permission['mask_color'] = 'darkviolet';
+                } elseif($permission['status_mask_id'] === 8) {
+                    $permission['mask_color'] = 'orange';
+                } elseif($permission['status_mask_id'] === 9) {
+                    $permission['mask_color'] = 'darkgreen';
+                } elseif($permission['status_mask_id'] === 10) {
+                    $permission['mask_color'] = 'darkyellow';
+                } elseif($permission['status_mask_id'] === 11) {
+                    $permission['mask_color'] = 'brown';
+                }  elseif($permission['status_mask_id'] === 12) {
+                    $permission['mask_color'] = 'darkblue';
+                } elseif($permission['status_mask_id'] === 13) {
+                    $permission['mask_color'] = 'red';
+                }
             }
         }
 

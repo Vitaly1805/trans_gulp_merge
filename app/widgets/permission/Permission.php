@@ -49,10 +49,7 @@ class Permission
         $stmt->bindValue(':emergency_minute', $emergencyMinute, PDO::PARAM_INT);
         $stmt->bindValue(':is_emergency_activation', $isEmergencyActivation, PDO::PARAM_BOOL);
         $stmt->execute();
-//        $stmt->execute(array('permission_id' => $permissionId, 'number' => $number,
-//                             'description' => $description, 'addition' => $addition,
-//                             'subdivision_id' => $subdivisionId, 'untypical_work' => $untypicalWork,
-//                             'emergency_minute' => $emergencyMinute, 'is_emergency_activation' => $isEmergencyActivation));
+
         $_SESSION['idCurrentPermission'] =  $stmt->fetch()['id'];
     }
 
@@ -87,8 +84,6 @@ class Permission
         $stmt->bindValue(':emergency_minute', $emergencyMinute, PDO::PARAM_INT);
         $stmt->bindValue(':is_emergency_activation', $isEmergencyActivation, PDO::PARAM_BOOL);
         $stmt->execute();
-//        $stmt->execute(array('permission_id' => $permissionId, 'description' => $description, 'addition' => $addition,
-//            'number' => $number, 'subdivision_id' => $subdivisionId, 'untypical_work' => $untypicalWork));
     }
 
     public function connectUserAndPermission($userId, $permissionId):void {

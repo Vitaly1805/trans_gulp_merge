@@ -161,16 +161,18 @@ if(document.querySelector('.table-permission__row')) {
             let formCreateByPermission = document.getElementById('create-by-permission');
             let formAgreementPermission = document.getElementById('agreement-permission');
             let formDelPermission = document.getElementById('del-permission');
-            activeForms = [formStoryPermission, formEditPermission, formCreateByPermission, formAgreementPermission, formDelPermission];
+            let formPDFPermission = document.getElementById('pdf-permission');
+            activeForms = [formStoryPermission, formPDFPermission, formEditPermission, formCreateByPermission, formAgreementPermission, formDelPermission];
         } else if(color == 'beige') {
             if(userRole === 'Диспетчер') {
                 let formEditPermission = document.getElementById('edit-permission');
                 activeForms = [formStoryPermission, formEditPermission];
             } else if(userRole === 'Автор') {
                 let formApplyPermission = document.getElementById('apply-permission');
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
                 let formCancelAgreementPermission = document.getElementById('cancel-agreement-permission');
-                activeForms = [formStoryPermission, formApplyPermission, formCreateByPermission, formCancelAgreementPermission];
+                activeForms = [formStoryPermission, formPDFPermission, formApplyPermission, formCreateByPermission, formCancelAgreementPermission];
             }else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             }else if(userRole === 'Сменный инженер') {
@@ -187,7 +189,8 @@ if(document.querySelector('.table-permission__row')) {
                 let formEditPermission = document.getElementById('edit-permission');
                 let formCancelApplyPermission = document.getElementById('cancel-apply-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formEditPermission, formCancelApplyPermission, formCreateByPermission];
+                let formPDFPermission = document.getElementById('pdf-permission');
+                activeForms = [formStoryPermission, formPDFPermission, formEditPermission, formCancelApplyPermission, formCreateByPermission];
             }else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             }else if(userRole === 'Сменный инженер') {
@@ -199,11 +202,12 @@ if(document.querySelector('.table-permission__row')) {
                 let formClosePermission = document.getElementById('close-permission');
                 let formPausePermission = document.getElementById('pause-permission');
                 let formActiveUnaskingPermission = document.getElementById('activeunmasking-permission'); 
-                let formActiveMaskingPermission = document.getElementById('activemasking-permission'); 
+                let formActiveMaskingPermission = document.getElementById('activemasking-permission');
                 activeForms = [formStartWork, formStoryPermission, formClosePermission, formPausePermission, formActiveUnaskingPermission, formActiveMaskingPermission];
             } else if(userRole === 'Автор') {
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                let formPDFPermission = document.getElementById('pdf-permission');
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             }else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             }else if(userRole === 'Сменный инженер') {
@@ -218,8 +222,9 @@ if(document.querySelector('.table-permission__row')) {
                 let formActiveMaskingPermission = document.getElementById('activemasking-permission');
                 activeForms = [formStoryPermission, formFinishWork, formClosePermission, formOpenPermission, formActiveUnaskingPermission, formActiveMaskingPermission];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
             }else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             }else if(userRole === 'Сменный инженер') {
@@ -232,8 +237,9 @@ if(document.querySelector('.table-permission__row')) {
                 let completePermission =  document.getElementById('completed-permission');
                 activeForms = [formStoryPermission, formActiveUnaskingPermission, completePermission, formFinishWork];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             }else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             }else if(userRole === 'Сменный инженер') {
@@ -249,8 +255,9 @@ if(document.querySelector('.table-permission__row')) {
                 let formOpenPermission = document.getElementById('open-permission');
                 activeForms = [formStoryPermission, formOpenPermission, formStartWork];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
             } else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             }
@@ -264,8 +271,9 @@ if(document.querySelector('.table-permission__row')) {
                 let formOpenPermission = document.getElementById('open-permission');
                 activeForms = [formStoryPermission, formOpenPermission, formStartWork];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
             } else if(userRole === 'Сменный инженер') {
                 activeForms = [formStoryPermission];
             }
@@ -275,8 +283,9 @@ if(document.querySelector('.table-permission__row')) {
                 let formOpenPermission = document.getElementById('open-permission');
                 activeForms = [formStoryPermission, formOpenPermission, formStartWork];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             } else if(userRole === 'Проверяющий инженер') {
                 activeForms = [formStoryPermission];
             } else if(userRole === 'Сменный инженер') {
@@ -292,16 +301,18 @@ if(document.querySelector('.table-permission__row')) {
                 let formFinishWork = document.getElementById('finish-work');
                 activeForms = [formStoryPermission, formRecoveryPermission, formClosePermission, formFinishWork];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             }
         } else if(color == 'lime') {
             if(userRole === 'Проверяющий инженер') {
                 let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission'); 
                 activeForms = [formCheckUnmaskingPermission];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             } else if(userRole === 'Диспетчер') {
                 let formFinishWork = document.getElementById('finish-work');
                 activeForms = [formStoryPermission, formFinishWork];
@@ -315,16 +326,18 @@ if(document.querySelector('.table-permission__row')) {
                 let formFinishWork = document.getElementById('finish-work');
                 activeForms = [formStoryPermission, formСompletePermission, formOpenPermission, formFinishWork];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             }
         } else if(color == 'white') {
             if(userRole === 'Диспетчер') {
                 let formRecoveryPermission = document.getElementById('recovery-permission');
                 activeForms = [formStoryPermission, formRecoveryPermission];
             } else if(userRole === 'Автор') {
+                let formPDFPermission = document.getElementById('pdf-permission');
                 let formCreateByPermission = document.getElementById('create-by-permission');
-                activeForms = [formStoryPermission, formCreateByPermission];
+                activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
             } else if(userRole === 'Сменный инженер') {
                 activeForms = [formStoryPermission];
             } else if(userRole === 'Проверяющий инженер') {
@@ -422,36 +435,6 @@ if(document.querySelector('.table-permission__background')) {
             cols.forEach(e => {
                 e.classList.add('table-permission__col_gray');
             })
-        }         
-        /*      */
-        else if(e.value === 'red') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_red');
-            })
-        } else if(e.value === 'brown') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_brown');
-            })
-        } else if(e.value === 'purple') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_purple');
-            })
-        } else if(e.value === 'orange') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_orange');
-            })
-        } else if(e.value === 'lime') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_lime');
-            })
-        } else if(e.value === 'darkgreen') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_darkgreen');
-            })
-        } else if(e.value === 'white') {
-            cols.forEach(e => {
-                e.classList.add('table-permission__col_white');
-            })
         }
     });
 }
@@ -524,7 +507,6 @@ if(document.getElementById('num_page')) {
     let formNumPagination = document.getElementById('form_num_page');
 
     inputsNumPages.forEach(e => {
-        console.log(e)
         e.closest('.pagination__item').addEventListener('click', () => {
             inputNumPage.value = e.value;
             formNumPagination.submit();

@@ -3,6 +3,8 @@
 namespace controllers;
 
 use core\base\Controller;
+use core\DB;
+use models\MainModel;
 
 class AppController extends Controller
 {
@@ -25,7 +27,9 @@ class AppController extends Controller
     }
 
     protected function exitFromProfile() {
-        $userId = intval($_COOKIE['user']);
+        $model = new MainModel();
+        $db = DB::getMainDB();
+        $model->setLog('вышел из системы', $_COOKIE['user'], $db);
         setcookie('user', '', 0, '/');
     }
 }

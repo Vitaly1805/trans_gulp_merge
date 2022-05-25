@@ -417,11 +417,6 @@
                         <input type="submit" value="Сохранить" name="update-permission" class="permission-add__button input button">
                         {% endif %}
                     </form>
-                    {% if roles.isAuthor %}
-                    <form action="" method="post">
-                        <input type="submit" name="pdf" value="Выгрузить в PDF" class="permission-add__button input button">
-                    </form>
-                    {% endif %}
                 </div>
             </div>
         </div>

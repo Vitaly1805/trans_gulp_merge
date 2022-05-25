@@ -18,7 +18,6 @@
                 <span class="header__subtitle">
                     {{user_fio}}
                 </span>
-                <input type="text" readonly value="Выйти" hidden name="exit">
             </form>
             <form method="post" class="header__icon header__exit icon_reg_auth">
                 <span class="icon-exit"></span>
@@ -411,6 +410,12 @@
                         <input type="submit" name="story" class="input button button-content permission-event button-permission" value="История">
                         <input type="text" class="row-id-process" hidden name="id" id="" required>
                     </form>
+                    {% if roles.isAuthor %}
+                    <form action="http://trans/permission" method="post" class="hidden" id="pdf-permission">
+                        <input type="submit" name="pdf" class="input button button-content permission-event button-permission" value="Выгрузить в PDF">
+                        <input type="text" class="row-id-process" hidden name="id" id="" required>
+                    </form>
+                    {% endif %}
 				</div>
 				<div class="content__filter filter-content">
 					<form method="post" class="filter-content__block">

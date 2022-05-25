@@ -9814,3 +9814,98 @@ period_start = TO_DATE(var_period_start,'YYYY-MM-DD'), period_end = TO_DATE(var_
 where permission.id = var_id"
 функция PL/pgSQL update_permission(integer,character varying,text,text,integer,text,integer,boolean,text,text), строка 4, оператор SQL-оператор; Файл: D:\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 73 
  ===================== 
+[2022-05-25 10:05:40] Сообщение: SQLSTATE[08006] [7] could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5433?
+could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5433?; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\DB.php; Линия: 15 
+ ===================== 
+[2022-05-25 10:05:44] Сообщение: SQLSTATE[08006] [7] could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (127.0.0.1) and accepting
+	TCP/IP connections on port 5433?
+could not connect to server: Connection refused (0x0000274D/10061)
+	Is the server running on host "localhost" (::1) and accepting
+	TCP/IP connections on port 5433?; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\DB.php; Линия: 15 
+ ===================== 
+[2022-05-25 11:06:21] Сообщение: Undefined variable $result; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\permission\Permission.php; Линия: 21 
+ ===================== 
+[2022-05-25 11:45:36] Сообщение: Cannot modify header information - headers already sent by (output started at D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php:5); Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-25 11:55:04] Сообщение: Cannot modify header information - headers already sent by (output started at D:\diplome\OpenServer\domains\trans\app\controllers\StoryController.php:13); Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-25 12:02:04] Сообщение: Undefined array key "HTTP_REFERER"; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 38 
+ ===================== 
+[2022-05-25 12:02:04] Сообщение: Undefined array key "HTTP_REFERER"; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 38 
+ ===================== 
+[2022-05-25 12:03:33] Сообщение: Undefined array key "HTTP_REFERER"; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 41 
+ ===================== 
+[2022-05-25 12:05:47] Сообщение: Undefined array key "HTTP_REFERER"; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 35 
+ ===================== 
+[2022-05-25 12:07:02] Сообщение: Cannot modify header information - headers already sent by (output started at D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php:5); Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-25 12:12:30] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php at line 129), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 12:19:54] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 12:23:03] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 12:27:53] Сообщение: SQLSTATE[42883]: Undefined function: 7 ОШИБКА:  функция get_employee(unknown, unknown, unknown) не существует
+LINE 1: SELECT * FROM get_employee($1, $2, $3)
+                      ^
+HINT:  Функция с данными именем и типами аргументов не найдена. Возможно, вам следует добавить явные приведения типов.; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\employee\Employee.php; Линия: 28 
+ ===================== 
+[2022-05-25 12:27:56] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 13:52:51] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 14:49:33] Сообщение: file_get_contents(D:/diplome/OpenServer/domains/trans/tmp/logs.log): Failed to open stream: No such file or directory; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 24 
+ ===================== 
+[2022-05-25 14:58:07] Сообщение: Call to a member function getUser() on null; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 24 
+ ===================== 
+[2022-05-25 14:58:13] Сообщение: Call to a member function getUsers() on null; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 24 
+ ===================== 
+[2022-05-25 14:58:14] Сообщение: Call to a member function getUsers() on null; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 24 
+ ===================== 
+[2022-05-25 14:58:15] Сообщение: Call to a member function getUsers() on null; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 24 
+ ===================== 
+[2022-05-25 14:58:59] Сообщение: Too few arguments to function widgets\user\User::__construct(), 0 passed in D:\diplome\OpenServer\domains\trans\app\models\AppModel.php on line 22 and exactly 1 expected; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\user\User.php; Линия: 9 
+ ===================== 
+[2022-05-25 15:02:39] Сообщение: Undefined array key "user"; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 25 
+ ===================== 
+[2022-05-25 15:02:54] Сообщение: Undefined array key "user"; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 25 
+ ===================== 
+[2022-05-25 15:05:47] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 25 
+ ===================== 
+[2022-05-25 16:13:44] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 92 
+ ===================== 
+[2022-05-25 16:14:03] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 92 
+ ===================== 
+[2022-05-25 16:14:13] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 91 
+ ===================== 
+[2022-05-25 16:14:23] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 91 
+ ===================== 
+[2022-05-25 16:15:13] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\models\PermissionModel.php; Линия: 91 
+ ===================== 
+[2022-05-25 16:27:40] Сообщение: Cannot modify header information - headers already sent by (output started at D:\diplome\OpenServer\domains\trans\app\widgets\user\User.php:27); Файл: D:\diplome\OpenServer\domains\trans\app\models\AppModel.php; Линия: 11 
+ ===================== 
+[2022-05-25 16:50:51] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 16:55:14] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 16:57:26] Сообщение: Call to undefined method widgets\protection\Protection::getProtectionsOfPermission(); Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 153 
+ ===================== 
+[2022-05-25 16:57:57] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 17:02:00] Сообщение: Data has already been sent to output (D:\diplome\OpenServer\domains\trans\vendor\core\libs\functions.php at line 5), unable to output PDF file; Файл: D:\diplome\OpenServer\domains\trans\vendor\mpdf\mpdf\src\Mpdf.php; Линия: 9568 
+ ===================== 
+[2022-05-25 17:09:55] Сообщение: Undefined array key ""; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 155 
+ ===================== 
+[2022-05-25 17:16:09] Сообщение: mb_chr(): Argument #1 ($codepoint) must be of type int, string given; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 156 
+ ===================== 
+[2022-05-25 17:16:34] Сообщение: mb_chr(): Argument #1 ($codepoint) must be of type int, string given; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 156 
+ ===================== 
+[2022-05-25 17:16:36] Сообщение: mb_chr(): Argument #1 ($codepoint) must be of type int, string given; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 156 
+ ===================== 
+[2022-05-25 17:26:12] Сообщение: Undefined array key "date_start"; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 105 
+ ===================== 

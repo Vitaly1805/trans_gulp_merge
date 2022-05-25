@@ -2,12 +2,11 @@
 
 namespace widgets\pdf;
 
-
 use Mpdf\Mpdf;
-use TCPDF;
 use widgets\date\Date;
 use widgets\employee\Employee;
 use widgets\permission\Permission;
+use widgets\protection\Protection;
 use widgets\typicalwork\TypicalWork;
 use widgets\user\User;
 
@@ -45,9 +44,12 @@ class PDF
 
         $html = "<div style='text-align: right;margin:0 0 20px 0;'>Начальнику {$supervisor['subdivision_name']} $supervisorFIO</div>
                 <div style='font-size: 16px;margin:0 0 20px 0;font-weight: bold;'>Разрешение на проведение работ</div>
-                <div style='margin: 0 0 5px 0'>АО Транснефть-Север разрешает проведение следующих работ по направлению деятельности отдела {$permission['subdivision_name']}</div> ";
-        $html .= $this->getFirstPart();
+                <div style='margin: 0 0 5px 0'>АО Транснефть-Север разрешает проведение следующих работ по направлению деятельности отдела {$permission['subdivision_name']}.</div> ";
+        $html .= $this->getFirstPart($permission);
         $html .= $this->getSecondPart($permission['untypical_work']);
+        $html .= $this->getThirdPart();
+        $html .= $this->getFourthPart($permission['emergency_minute'], $permission['is_emergency_activation']);
+        $html .= $this->getFifthPart($permission['description']);
 
         $this->mpdf->AddPage('', // L - landscape, P - portrait
             '', '', '', '',
@@ -76,20 +78,28 @@ class PDF
         return "<div>{$user['user_position']} $fio</div>";
     }
 
-    protected function getFirstPart():string {
-        $result = "<div style='margin: 0 0 5px 0;font-weight: bold;'>1. Периоды проведения работ</div>
-                   <div style='margin: 0 0 3px 15px;'>Первый день:</div>";
+    protected function getFirstPart($permission):string {
+        $result = "<div style='margin: 0 0 5px 0;font-weight: bold;'>1. Периоды проведения работ</div>";
         $dates = $this->date->getDates($this->permissionId);
 
-        for ($i = 0; $i < count($dates); $i++) {
-            if($i === 0) {
-                $result .= "<div style='margin: 0 0 10px 15px;'><span>Начало работ {$dates[$i]['date']} {$dates[$i]['from_time']}</span> <span>Окончание работ {$dates[$i]['date']} {$dates[$i]['to_time']}</span></div>";
-            } else {
-                if($i === 1) {
-                    $result .= "<div style='margin: 0 0 3px 15px;'>Последующие дни</div>";
+        if(count($dates) > 0) {
+            $result .= "<div style='margin: 0 0 3px 15px;'>Первый день:</div>";
+
+            for ($i = 0; $i < count($dates); $i++) {
+                if($i === 0) {
+                    $result .= "<div style='margin: 0 0 0 15px;'><span>Начало работ {$dates[$i]['date']} {$dates[$i]['from_time']}</span> 
+                                <span>Окончание работ {$dates[$i]['date']} {$dates[$i]['to_time']}</span></div>";
+                } else {
+                    if($i === 1) {
+                        $result .= "<div style='margin: 3px 0 3px 15px;'>Последующие дни</div>";
+                    }
+                    $result .= "<div style='margin: 0 0 0 15px;'><span style='padding: 0 20px 0 0;'>Начало работ {$dates[$i]['date']} {$dates[$i]['from_time']}</span> 
+                                <span>Окончание работ {$dates[$i]['date']} {$dates[$i]['to_time']}</span></div>";
                 }
-                $result .= "<div style='margin: 0 0 0 15px;'><span style='padding: 0 20px 0 0;'>Начало работ {$dates[$i]['date']} {$dates[$i]['from_time']}</span> <span>Окончание работ {$dates[$i]['date']} {$dates[$i]['to_time']}</span></div>";
             }
+        } else  {
+            $result .= "<div style='margin: 0 0 0 15px;'><span>Начало работ {$permission['period_start']}</span> 
+                                <span>Окончание работ {$permission['period_end']}</span></div>";
         }
 
         return $result;
@@ -120,6 +130,109 @@ class PDF
         }
 
         $result .= "</tbody></table>";
+
+        return $result;
+    }
+
+    protected function getThirdPart($countMinutes = 0, $isEmergencyActive = false):string {
+        $result = "<div style='margin: 5px 0;font-weight: bold;'>3. Маскирвание защит:</div>";
+        $result .= "<table style='margin: 0 0 0 17px; width: 100%;' border='0' cellspacing='0' cellpadding='0'>
+                    <thead>
+                      <tr>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Система</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Защита</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Вход</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Выход</td>
+                         <td style='width: 16%; border: 1px solid #000;text-align: center;padding: 5px;'>Тип объекта</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Объект</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Втор</td>
+                      </tr>
+                    </thead>
+                    <tbody>";
+
+        $protections = $this->prepareInfoAboutProtections($this->permission->getProtectionsOfPermission($this->permissionId));
+
+        foreach ($protections as $protection) {
+            $result .= "
+                      <tr>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['system_apcs_name']}</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['protection_name']}</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['in']}</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['out']}</td>
+                         <td style='width: 16%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['type_object_name']}</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['object_name']}</td>
+                         <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['vtor']}</td>
+                      </tr>";
+        }
+
+        $result .= "</tbody></table>";
+
+        return $result;
+    }
+
+    protected function prepareInfoAboutProtections($protections) {
+        foreach ($protections as &$protection) {
+            if($protection['entrance_name'] == 'Вход') {
+                $protection['in'] = '+';
+                $protection['out'] = '-';
+            } else {
+                $protection['in'] = '-';
+                $protection['out'] = '+';
+            }
+
+            if($protection['vtor_name'] == 'Втор') {
+                $protection['vtor'] = '+';
+            } else {
+                $protection['vtor'] = '-';
+            }
+
+            if($protection['object_name'] === '') {
+                $protection['object_name'] = '-';
+            }
+        }
+
+        return $protections;
+    }
+
+    protected function getFourthPart($countMinutes = 0, $isEmergencyActive = false):string {
+        $result = "<div style='margin: 5px 0;font-weight: bold;'>4. Прочие условия проведения работ:</div>";
+
+        $result .= "<div style='margin: 0 0 5px 18px;'>4.1 Аварийная готовность $countMinutes минут.</div>";
+
+        if($isEmergencyActive) {
+            $emergencyActive = 'да';
+        } else {
+            $emergencyActive = 'нет';
+        }
+
+        $result .= "<div  style='margin: 0 0 5px 18px;'>4.2 Отметка об отсутствии(наличии) аварийного включения резерва(АВР) при выполнении работ: $emergencyActive.</div>";
+
+        $result .= $this->getResponsibleText(2, 'подготовку');
+        $result .= $this->getResponsibleText(3, 'выполнение');
+        $result .= $this->getResponsibleText(4, 'контроль при производстве');
+
+        return $result;
+    }
+
+    protected function getFifthPart($description = '') {
+        return "<span style='margin: 5px 0;font-weight: bold;'>5. При производстве работ обеспечить: </span><span>$description.</span>";
+    }
+
+    protected function getResponsibleText($typeResponsiblesId, $nameEmployee) {
+        $responsibles = $this->employee->getEmployee($typeResponsiblesId, $this->permissionId);
+
+        $result = "<div style='margin: 0 0 5px 18px;'>4.3. Ответственный за $nameEmployee работ: ";
+        for ($i = 0; $i < count($responsibles); $i++) {
+            $sign = '; ';
+            if($i + 1 === count($responsibles)) {
+                $sign = '.';
+            }
+            $result .= $responsibles[$i]['user_position'] . ', ';
+            $result .= $this->getFIO($responsibles[$i]['name'], $responsibles[$i]['lastname'], $responsibles[$i]['patronymic']) . ', ';
+            $result .= trim($responsibles[$i]['mobile']) . $sign;
+        }
+
+        $result .= '</div>';
 
         return $result;
     }

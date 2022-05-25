@@ -137,6 +137,7 @@ class MainModel extends AppModel
                 setcookie('user', $user[0]['user_id'], time() + 3600 * 8);
 
                 $this->delSessionsOfAuthorization();
+                $this->setLog('авторизовался в системе', $user[0]['user_id'], $this->db);
                 $this->redirect('permission');
             }
         }

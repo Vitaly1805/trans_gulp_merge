@@ -37,6 +37,7 @@ class PermissionModel extends AppModel
         } else {
             $this->db = DB::getMainDB();
         }
+
         $this->employee = new Employee($this->db);
         $this->permission = new Permission($this->db);
         $this->typicalWork = new TypicalWork($this->db);
@@ -87,7 +88,10 @@ class PermissionModel extends AppModel
             $date = $date . ' ' .$time;
         }
 
+        $nameStatus = $this->status->getStatuses($idStatus)[0]['name'];
         $this->statusLog->addStatusManagementLog($permissionId, $idStatus, $_COOKIE['user'], $comment, $date);
+
+        $this->setLog('изменил статус разрешения', $_COOKIE['user'], $this->db, "№ $permissionId", "на '$nameStatus'");
 
         $this->redirect('permission', '');
     }
@@ -122,11 +126,13 @@ class PermissionModel extends AppModel
             $this->employee->addEmployee($supervisorId, $_SESSION['idCurrentPermission'], 5);
         }
 
+        $this->setLog('создал разрешение', $_COOKIE['user'], $this->db, "№{$_SESSION['idCurrentPermission']}");
         $this->redirect('permission', 'add');
     }
 
     public function delPermission($permissionId) {
         $this->permission->delPermission($permissionId);
+        $this->setLog('удалил разрешение', $_COOKIE['user'], $this->db, "№$permissionId");
         $this->redirect('permission', '');
     }
 
@@ -168,7 +174,7 @@ class PermissionModel extends AppModel
             $objectProtection->setMaskingProtectionsStuttering($_SESSION['idCurrentPermission'], $protection['vtor_id'], $protection['entrance_id'], $protection['protectionid'],
                 $protection['masking'], $protection['check_masking'], $protection['unmasking'], $protection['check_unmasking'], $protection['objectid']);
         }
-
+        $this->setLog('создал разрешение', $_COOKIE['user'], $this->db, "№{$_SESSION['idCurrentPermission']}");
         $this->redirect('permission', 'add');
     }
 
@@ -219,6 +225,10 @@ class PermissionModel extends AppModel
             $permissions =  $this->permission->getPermission(0, '', 0, '', $_SESSION['date_start'], $_SESSION['date_end']);
         }
 
+        $permissions = $this->setCurrentStatuses($permissions, 'permission', 1);
+        $permissions = $this->setCurrentStatuses($permissions, 'mask', 2);
+        $permissions = $this->setCurrentStatuses($permissions, 'work', 3);
+
         return $permissions;
     }
 
@@ -260,6 +270,8 @@ class PermissionModel extends AppModel
         }
 
         unset($_SESSION['filter']);
+        unset($_SESSION['date_start']);
+        unset($_SESSION['date_end']);
 
         return $result;
     }
@@ -598,7 +610,9 @@ class PermissionModel extends AppModel
         $roles = $this->role->getRoles($_COOKIE['user']);
         $currentUser = $this->user->getUsers($_COOKIE['user'])[0];
 
-        return ['permissions' => $this->getPermissions($roles),
+        return ['date_start' => $this->getDate('date_start'),
+            'date_end' => $this->getDate('date_end'),
+            'permissions' => $this->getPermissions($roles),
             'protections' => $this->protection->getProtectionsOfPermissionThisStatuses($_COOKIE['user']),
             'author' => $currentUser,
             'dates' => $this->getDates($roles),
@@ -610,8 +624,6 @@ class PermissionModel extends AppModel
             'search_info' => $this->getSearch(),
             'roles' => $roles,
             'statuses' => $this->getStatuses($roles),
-            'date_start' => $this->getDate('date_start'),
-            'date_end' => $this->getDate('date_end'),
             'user_fio' => $this->getUserFio($this->db),
             'is_archive' => $this->isArchive(),
             'nums_pages' => $this->pagination->getArrNumPages()];
@@ -669,7 +681,6 @@ class PermissionModel extends AppModel
                 $permission['color'] = 'lightblue';
             } elseif($permission['status_id'] === 15) {  /* Работа окончена */
                 $permission['color'] = 'lightyellow';
-//                Иное основание для создания разрешения
             } elseif($permission['status_id'] === 16) {  /* Завершить */
                 $permission['color'] = 'white';
             }
@@ -724,6 +735,7 @@ class PermissionModel extends AppModel
                         'Периоды работ', 'Типовые работы', 'Нетиповые работы', 'Описание', 'Дополнение');
         $result = [];
         $permissions = [];
+        $idPermissions = '';
         $scv = new SCV("Разрешения.csv", $this->db);
         $responsiblesForPrepare = $scv->getSCVResponse(2, $listId);
         $responsiblesForExecute = $scv->getSCVResponse(3, $listId);
@@ -740,6 +752,7 @@ class PermissionModel extends AppModel
             $result[$permission['id']]['number'] = $permission['number'];
             $result[$permission['id']]['status_name'] = $permission['status_name'];
             $result[$permission['id']]['subdivision_name'] = $permission['subdivision_name'];
+            $idPermissions .= '№' . $permission['id'] . ' ';
         }
         $result = $scv->setSCVResponseText($result, $responsiblesForPrepare,  'responsePrepare');
         $result = $scv->setSCVResponseText($result, $responsiblesForExecute,  'responseExecute');
@@ -752,14 +765,17 @@ class PermissionModel extends AppModel
             $result[$permission['id']]['addition'] = $permission['addition'];
         }
 
+        $this->setLog('выгрузил в scv разрешения', $_COOKIE['user'], $this->db, "$idPermissions");
+
         $scv->downloadSendHeaders();
         echo $scv->listToSCV($result, $titles);
         die();
     }
 
-    public function downloadPDF() {
-        $pdf = new PDF($this->db, intval($_SESSION['idCurrentPermission']));
+    public function downloadPDF($id) {
+        $pdf = new PDF($this->db, intval($id));
         $pdf->download();
+        $this->setLog('выгрузил в pdf разрешение', $_COOKIE['user'], $this->db, "№$id");
     }
 
 }

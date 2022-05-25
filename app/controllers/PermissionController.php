@@ -2,6 +2,7 @@
 
 namespace controllers;
 
+use core\DB;
 use core\Twig;
 use models\PermissionModel;
 
@@ -13,6 +14,7 @@ class PermissionController extends AppController
         $this->checkAuthorization();
         $this->setMeta('Разрешения');
         $this->model = new PermissionModel();
+        $db = new DB();
 
         if(isset($_POST['del-permission'])) {
             $this->model->delPermission($_POST['id']);
@@ -68,6 +70,8 @@ class PermissionController extends AppController
             $this->model->downloadSCV($_POST['id']);
         } elseif(isset($_POST['completed-permission'])) {
             $this->model->addStatusOfPermission($_POST['id'], 16);
+        }  elseif(isset($_POST['pdf'])) {
+            $this->model->downloadPDF($_POST['id']);
         }
 
         $this->setIndexVarsToTwig();
@@ -94,8 +98,6 @@ class PermissionController extends AppController
             $this->model->searchPermissions();
         } elseif(isset($_REQUEST['id_responsible_for_preparation'])) {
             $this->model->delEmployee($_REQUEST["id_responsible_for_preparation"], $_SESSION['idCurrentPermission'], 2);
-        } elseif(isset($_POST['pdf'])) {
-            $this->model->downloadPDF();
         } elseif(isset($_POST['add-period'])) {
             $this->model->updatePeriod($_POST['date-start'], $_POST['date-end']);
         }

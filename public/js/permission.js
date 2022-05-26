@@ -265,106 +265,19 @@ if(document.querySelector('.table-permission__row')) {
                 let formUnmaskingPermission = document.getElementById('unmasking-permission');
                 activeForms = [formStoryPermission, formMaskingPermission, formUnmaskingPermission];
             }
+        }  else if(color == 'pastel') {
+            if (userRole === 'Диспетчер') {
+                let dormRecoveryPermission = document.getElementById('recovery-permission');
+                activeForms = [formStoryPermission, dormRecoveryPermission];
+            } else if (userRole === 'Автор') {
+                let formCreateByPermission = document.getElementById('create-by-permission');
+                activeForms = [formStoryPermission, formCreateByPermission];
+            } else if (userRole === 'Проверяющий инженер') {
+                activeForms = [formStoryPermission];
+            } else if (userRole === 'Сменный инженер') {
+                activeForms = [formStoryPermission];
+            }
         }
-        //  else if(color == 'red') {
-        //     /* Требуется маскирование */
-        //     if(userRole === 'Сменный инженер') {
-        //         let formMaskingPermission = document.getElementById('masking-permission');
-        //         activeForms = [formMaskingPermission, formStoryPermission];
-        //     }  else if(userRole === 'Диспетчер') {
-        //         let formStartWork = document.getElementById('start-work');
-        //         let formOpenPermission = document.getElementById('open-permission');
-        //         activeForms = [formStoryPermission, formOpenPermission, formStartWork];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
-        //     } else if(userRole === 'Проверяющий инженер') {
-        //         activeForms = [formStoryPermission];
-        //     }
-        // } else if(color == 'brown') {
-        //     /* Маскирование проведено */
-        //     if(userRole === 'Проверяющий инженер') {
-        //         let formMaskingPermission = document.getElementById('check_masking-permission');
-        //         activeForms = [formMaskingPermission, formStoryPermission];
-        //     } else if(userRole === 'Диспетчер') {
-        //         let formStartWork = document.getElementById('start-work');
-        //         let formOpenPermission = document.getElementById('open-permission');
-        //         activeForms = [formStoryPermission, formOpenPermission, formStartWork];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formPDFPermission, formCreateByPermission];
-        //     } else if(userRole === 'Сменный инженер') {
-        //         activeForms = [formStoryPermission];
-        //     }
-        // } else if(color == 'purple') {
-        //     if(userRole === 'Диспетчер') {
-        //         let formStartWork = document.getElementById('start-work');
-        //         let formOpenPermission = document.getElementById('open-permission');
-        //         activeForms = [formStoryPermission, formOpenPermission, formStartWork];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-        //     } else if(userRole === 'Проверяющий инженер') {
-        //         activeForms = [formStoryPermission];
-        //     } else if(userRole === 'Сменный инженер') {
-        //         activeForms = [formStoryPermission];
-        //     }
-        // } else if(color == 'orange') {
-        //     if(userRole === 'Сменный инженер') {
-        //         let formUnmaskingPermission = document.getElementById('unmasking-permission');
-        //         activeForms = [formStoryPermission, formUnmaskingPermission];
-        //     } else if(userRole === 'Диспетчер') {
-        //         let formClosePermission = document.getElementById('close-permission');
-        //         let formRecoveryPermission = document.getElementById('recovery-permission');
-        //         let formFinishWork = document.getElementById('finish-work');
-        //         activeForms = [formStoryPermission, formRecoveryPermission, formClosePermission, formFinishWork];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-        //     }
-        // } else if(color == 'lime') {
-        //     if(userRole === 'Проверяющий инженер') {
-        //         let formCheckUnmaskingPermission = document.getElementById('check_unmasking-permission');
-        //         activeForms = [formCheckUnmaskingPermission];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-        //     } else if(userRole === 'Диспетчер') {
-        //         let formFinishWork = document.getElementById('finish-work');
-        //         activeForms = [formStoryPermission, formFinishWork];
-        //     } else if(userRole === 'Сменный инженер') {
-        //         activeForms = [formStoryPermission];
-        //     }
-        // } else if(color == 'darkgreen') {
-        //     if(userRole === 'Диспетчер') {
-        //         let formOpenPermission = document.getElementById('open-permission');
-        //         let formСompletePermission = document.getElementById('completed-permission');
-        //         let formFinishWork = document.getElementById('finish-work');
-        //         activeForms = [formStoryPermission, formСompletePermission, formOpenPermission, formFinishWork];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-        //     }
-        // } else if(color == 'white') {
-        //     if(userRole === 'Диспетчер') {
-        //         let formRecoveryPermission = document.getElementById('recovery-permission');
-        //         activeForms = [formStoryPermission, formRecoveryPermission];
-        //     } else if(userRole === 'Автор') {
-        //         let formPDFPermission = document.getElementById('pdf-permission');
-        //         let formCreateByPermission = document.getElementById('create-by-permission');
-        //         activeForms = [formStoryPermission, formCreateByPermission, formPDFPermission];
-        //     } else if(userRole === 'Сменный инженер') {
-        //         activeForms = [formStoryPermission];
-        //     } else if(userRole === 'Проверяющий инженер') {
-        //         activeForms = [formStoryPermission];
-        //     }
-        // }
     }
 
     function showFormsFuncs() {

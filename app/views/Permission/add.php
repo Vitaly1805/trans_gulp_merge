@@ -70,7 +70,7 @@
                         </div>
                         <div class="permission-add__block permission-add__block_top">
                             <div class="permission-add__title">
-                                Иное основание для создания разрешения:
+                                Основание для создания разрешения(приказ, распоряжение,служебная записка и т.д.):
                             </div>
                             {% if roles.isAuthor and permission.status_id < 3 %}
                             <textarea class="permission-add__textarea permission-add__textarea_top textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>
@@ -79,16 +79,6 @@
                             {% endif %}
                         </div>
                     </div>
-<!--                    <div class="permission-add__item">-->
-<!--                        <div class="permission-add__title">-->
-<!--                            Иное основание для создания разрешения:-->
-<!--                        </div>-->
-<!--                        {% if roles.isAuthor and permission.status_id < 3 %}-->
-<!--                        <textarea class="permission-add__textarea textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>-->
-<!--                        {% else %}-->
-<!--                        <textarea readonly class="permission-add__textarea textarea" name="description" id="description" cols="30" rows="10" placeholder="Введите описание...">{{permission.description}}</textarea>-->
-<!--                        {% endif %}-->
-<!--                    </div>-->
                     <div class="permission-add__item">
                         <div class="permission-add__title">
                             1. Периоды проведения работ:

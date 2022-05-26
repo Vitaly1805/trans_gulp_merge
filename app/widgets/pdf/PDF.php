@@ -134,9 +134,12 @@ class PDF
         return $result;
     }
 
-    protected function getThirdPart($countMinutes = 0, $isEmergencyActive = false):string {
+    protected function getThirdPart():string {
         $result = "<div style='margin: 5px 0;font-weight: bold;'>3. Маскирвание защит:</div>";
-        $result .= "<table style='margin: 0 0 0 17px; width: 100%;' border='0' cellspacing='0' cellpadding='0'>
+        $protections = $this->prepareInfoAboutProtections($this->permission->getProtectionsOfPermission($this->permissionId));
+
+        if(count($protections) > 0) {
+            $result .= "<table style='margin: 0 0 0 17px; width: 100%;' border='0' cellspacing='0' cellpadding='0'>
                     <thead>
                       <tr>
                          <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>Система</td>
@@ -150,10 +153,9 @@ class PDF
                     </thead>
                     <tbody>";
 
-        $protections = $this->prepareInfoAboutProtections($this->permission->getProtectionsOfPermission($this->permissionId));
 
-        foreach ($protections as $protection) {
-            $result .= "
+            foreach ($protections as $protection) {
+                $result .= "
                       <tr>
                          <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['system_apcs_name']}</td>
                          <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['protection_name']}</td>
@@ -163,9 +165,12 @@ class PDF
                          <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['object_name']}</td>
                          <td style='width: 14%; border: 1px solid #000;text-align: center;padding: 5px;'>{$protection['vtor']}</td>
                       </tr>";
-        }
+            }
 
-        $result .= "</tbody></table>";
+            $result .= "</tbody></table>";
+        } else {
+            $result .= '<div style="margin: 0 0 0 18px">Список масок пуст.</div>';
+        }
 
         return $result;
     }

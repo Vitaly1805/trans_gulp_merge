@@ -35,7 +35,7 @@ class View
             extract($data);
         }
 
-        $viewDirectory = APP . "/views/{$this->prefix}{$this->controller}";
+        $viewDirectory = APP . "\\views\\{$this->prefix}{$this->controller}";
         Twig::setTwig($viewDirectory);
         Twig::setLoadTemplate("{$this->view}.php");
         $this->setVarsToTwig();

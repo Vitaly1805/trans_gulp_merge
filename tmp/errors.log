@@ -9967,3 +9967,39 @@ CONTEXT:  функция PL/pgSQL get_permission(integer,character varying,integ
  ===================== 
 [2022-05-26 10:28:57] Сообщение: Undefined array key 0; Файл: D:\diplome\OpenServer\domains\trans\app\widgets\pdf\PDF.php; Линия: 36 
  ===================== 
+[2022-05-26 15:53:23] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/date.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/date.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:53:50] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/date.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/date.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:08] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/index.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/index.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:09] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/index.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/index.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:09] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/index.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/index.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:09] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/index.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/index.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:09] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/index.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/index.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:09] Сообщение: The "D:/diplome/OpenServer/domains/trans/app/views/Date/index.php" directory does not exist ("D:/diplome/OpenServer/domains/trans/app/views/Date/index.php").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:54:24] Сообщение: The "D:\diplome\OpenServer\domains	rans\appiews\Date" directory does not exist ("D:\diplome\OpenServer\domains	rans\appiews\Date").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 15:57:42] Сообщение: Undefined variable $viewDirectory; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\base\View.php; Линия: 41 
+ ===================== 
+[2022-05-26 15:58:42] Сообщение: The "D:\diplome\OpenServer\domains\trans\app\views\Permission\add" directory does not exist ("D:\diplome\OpenServer\domains\trans\app\views\Permission\add").; Файл: D:\diplome\OpenServer\domains\trans\vendor\twig\twig\src\Loader\FilesystemLoader.php; Линия: 106 
+ ===================== 
+[2022-05-26 16:25:38] Сообщение: Контроллер controllers\PublicController не найден; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 37 
+ ===================== 
+[2022-05-26 16:40:36] Сообщение: Контроллер controllers\PublicController не найден; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 37 
+ ===================== 
+[2022-05-26 16:40:36] Сообщение: Контроллер controllers\FaviconController не найден; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 37 
+ ===================== 
+[2022-05-26 16:40:41] Сообщение: Страница не найдена; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 40 
+ ===================== 
+[2022-05-26 16:40:41] Сообщение: Контроллер controllers\FaviconController не найден; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 37 
+ ===================== 
+[2022-05-26 16:40:52] Сообщение: Страница не найдена; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 40 
+ ===================== 
+[2022-05-26 16:40:52] Сообщение: Контроллер controllers\FaviconController не найден; Файл: D:\diplome\OpenServer\domains\trans\vendor\core\Router.php; Линия: 37 
+ ===================== 
